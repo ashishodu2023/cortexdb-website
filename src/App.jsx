@@ -379,8 +379,8 @@ function VectorCanvas() {
 
 /* ── Terminal demo ─────────────────────────────────────────────── */
 const DEMO = [
-  { t:0,    k:"cmd",   s:"$ pip install gettidevec" },
-  { t:700,  k:"ok",    s:"✓ Successfully installed gettidevec-0.1.0" },
+  { t:0,    k:"cmd",   s:"$ pip install tidevec" },
+  { t:700,  k:"ok",    s:"✓ Successfully installed tidevec-0.1.0" },
   { t:1200, k:"blank", s:"" },
   { t:1500, k:"py",    s:">>> from tidevec import TideVec, HalfLife" },
   { t:2000, k:"py",    s:'>>> db = TideVec("localhost:6399")' },
@@ -587,10 +587,10 @@ function Navbar() {
 
   return (
     <nav style={{
-      position:"fixed", top:0, left:0, right:0, zIndex:200,
-      background: scrolled ? "rgba(255,255,255,0.96)" : "transparent",
-      backdropFilter: scrolled ? "blur(12px)" : "none",
-      borderBottom: scrolled ? `1px solid ${C.border}` : "1px solid transparent",
+      position:"sticky", top:0, zIndex:200,
+      background: scrolled ? "rgba(255,255,255,0.96)" : "rgba(10,15,30,0.85)",
+      backdropFilter:"blur(12px)",
+      borderBottom: scrolled ? `1px solid ${C.border}` : "1px solid rgba(255,255,255,0.08)",
       transition:"all 0.25s",
     }}>
       <div style={{
@@ -606,7 +606,7 @@ function Navbar() {
             display:"flex", alignItems:"center", justifyContent:"center",
             color:"#fff", fontWeight:900, fontSize:16, fontFamily:F.mono,
             boxShadow:`0 2px 12px rgba(37,99,235,0.35)`,
-          }}>C</div>
+          }}>T</div>
           <span style={{
             fontFamily:F.display, fontWeight:800, fontSize:19,
             letterSpacing:"-0.03em",
@@ -622,13 +622,13 @@ function Navbar() {
             ["GitHub","https://github.com/ashishodu2023/TideVec"]
           ].map(([l,h])=>(
             <a key={l} href={h} style={{
-              color: scrolled ? C.body : "rgba(255,255,255,0.8)",
+              color: scrolled ? C.body : "rgba(255,255,255,0.85)",
               fontSize:14, fontWeight:500,
               padding:"6px 12px", borderRadius:6,
               transition:"color 0.15s",
             }}
               onMouseEnter={e=>e.currentTarget.style.color=scrolled?C.ink:"#fff"}
-              onMouseLeave={e=>e.currentTarget.style.color=scrolled?C.body:"rgba(255,255,255,0.8)"}
+              onMouseLeave={e=>e.currentTarget.style.color=scrolled?C.body:"rgba(255,255,255,0.85)"}
             >{l}</a>
           ))}
           <a href="#pricing" style={{
@@ -672,7 +672,7 @@ function Hero() {
       <div style={{
         position:"relative", zIndex:10,
         maxWidth:1100, margin:"0 auto",
-        padding:"130px 24px 80px",
+        padding:"70px 24px 80px",
         display:"grid", gridTemplateColumns:"1fr 1fr",
         gap:60, alignItems:"center",
       }}>
@@ -751,7 +751,7 @@ function Hero() {
           }}>
             <code style={{
               fontFamily:F.mono, fontSize:13, color:C.cyan,
-            }}>pip install gettidevec</code>
+            }}>pip install tidevec</code>
             <span style={{
               fontSize:11, color:"rgba(255,255,255,0.4)",
               fontFamily:F.mono,
@@ -803,7 +803,7 @@ function AnnouncementBar() {
         fontFamily:F.mono, fontSize:12, fontWeight:700,
         background:"rgba(255,255,255,0.15)",
         padding:"1px 7px", borderRadius:4,
-      }}>pip install gettidevec</code>
+      }}>pip install tidevec</code>
       {" "}· Docker Hub: <code style={{fontFamily:F.mono,fontSize:12,fontWeight:700}}>averm004/tidevec</code>
     </div>
   );
@@ -828,7 +828,7 @@ function HowItWorks() {
   const steps = [
     { icon:"📦", n:"01", title:"Install",
       desc:"One command. Connects to local or hosted TideVec server.",
-      code:"pip install gettidevec\n\nfrom tidevec import TideVec\ndb = TideVec(\"localhost:6399\")" },
+      code:"pip install tidevec\n\nfrom tidevec import TideVec\ndb = TideVec(\"localhost:6399\")" },
     { icon:"🗂️", n:"02", title:"Create collection",
       desc:"Set embedding dimension and temporal decay half-life.",
       code:"db.create_collection(\"docs\",\n  dim=768,\n  half_life_ms=ONE_WEEK,\n  temporal_blend=0.3)" },
@@ -1136,7 +1136,7 @@ function Pricing() {
     { name:"Free", price:"$0", sub:"Self-host forever. No credit card.",
       highlight:false,
       cta:{label:"Get started →",href:"https://github.com/ashishodu2023/TideVec"},
-      items:["pip install gettidevec","Unlimited vectors (self-hosted)",
+      items:["pip install tidevec","Unlimited vectors (self-hosted)",
         "TVIndex + CausalEdge","Python/Go/Java/C++ SDKs",
         "REST + gRPC API","Docker CPU/GPU/TPU","Apache 2.0"],
     },
@@ -1149,7 +1149,7 @@ function Pricing() {
     },
     { name:"Enterprise", price:"Custom", sub:"VPC, SSO, SLA, dedicated support.",
       highlight:false,
-      cta:{label:"Talk to us",href:"mailto:contact@gettidevec.com?subject=Enterprise"},
+      cta:{label:"Talk to us",href:"mailto:contact@tidevec.com?subject=Enterprise"},
       items:["Everything in Pro","VPC / on-prem","SSO / SAML",
         "Raft 5-node cluster","Custom retention","SLA","Dedicated Slack"],
     },
@@ -1221,7 +1221,7 @@ function Pricing() {
                       <div style={{fontSize:13,color:C.muted,marginBottom:8,textAlign:"center"}}>
                         Contact us to start Pro
                       </div>
-                      <a href="mailto:contact@gettidevec.com?subject=TideVec Pro"
+                      <a href="mailto:contact@tidevec.com?subject=TideVec Pro"
                         style={{
                           display:"block",textAlign:"center",
                           background:`linear-gradient(135deg,${C.blue},${C.indigo})`,
@@ -1284,8 +1284,8 @@ function Pricing() {
           ))}
         </div>
         <p style={{textAlign:"center",fontSize:12,color:C.muted,marginTop:20}}>
-          Cancel anytime · <a href="mailto:contact@gettidevec.com"
-            style={{color:C.blue,fontWeight:600}}>contact@gettidevec.com</a>
+          Cancel anytime · <a href="mailto:contact@tidevec.com"
+            style={{color:C.blue,fontWeight:600}}>contact@tidevec.com</a>
         </p>
       </div>
     </section>
@@ -1383,7 +1383,7 @@ function Footer() {
                 background:`linear-gradient(135deg,${C.blue},${C.cyan})`,
                 display:"flex",alignItems:"center",justifyContent:"center",
                 color:"#fff",fontWeight:900,fontSize:14,fontFamily:F.mono,
-              }}>C</div>
+              }}>T</div>
               <span style={{
                 fontFamily:F.display,fontWeight:800,fontSize:17,
                 background:`linear-gradient(135deg,${C.blue},${C.indigo})`,
@@ -1399,8 +1399,8 @@ function Footer() {
 
           {[
             {title:"Product",links:[["Search","#search"],["Features","#features"],["Compare","#compare"],["Pricing","#pricing"]]},
-            {title:"Developers",links:[["GitHub","https://github.com/ashishodu2023/TideVec"],["PyPI (gettidevec)","https://pypi.org/project/gettidevec"],["Docker Hub","https://hub.docker.com/r/averm004/tidevec"],["Docs","/docs"]]},
-            {title:"Company",links:[["Contact","mailto:contact@gettidevec.com"],["CortexOps","https://getcortexops.com"],["LinkedIn","https://www.linkedin.com/in/ashishodu2023/"]]},
+            {title:"Developers",links:[["GitHub","https://github.com/ashishodu2023/TideVec"],["PyPI (tidevec)","https://pypi.org/project/tidevec"],["Docker Hub","https://hub.docker.com/r/averm004/tidevec"],["Docs","/docs"]]},
+            {title:"Company",links:[["Contact","mailto:contact@tidevec.com"],["CortexOps","https://getcortexops.com"],["LinkedIn","https://www.linkedin.com/in/ashishodu2023/"]]},
           ].map(col=>(
             <div key={col.title}>
               <div style={{
